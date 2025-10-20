@@ -2,6 +2,12 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Dancing_Script } from 'next/font/google'
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: '400',
+})
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -73,15 +79,23 @@ export default function Home() {
         className="absolute top-0 left-0 w-full opacity-60 pointer-events-none select-none z-0"
       />
 
-      {/* Header Logo */}
-      <motion.img
-        src="/header.png"
-        alt="TheGirlz.store"
+      {/* Header Text */}
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="w-80 md:w-96 lg:w-[28rem] mb-8 mt-8 relative z-30"
-      />
+        className="mb-8 mt-8 relative z-30 flex flex-col items-center pb-4"
+      >
+        <h1
+          className={`text-7xl md:text-8xl ${dancingScript.className} bg-gradient-to-r from-pink-200 to-pink-400 bg-clip-text text-transparent tracking-wider leading-tight`}
+        >
+          TheGirlz
+        </h1>
+        <div className="mt-4 relative inline-block pb-2">
+          <span className="text-2xl md:text-3xl text-gray-800">STORE</span>
+          <div className="absolute bottom-[-4px] left-0 right-0 h-[2px] border-b-2 border-dotted border-pink-300"></div>
+        </div>
+      </motion.div>
 
       <motion.p
         initial={{ opacity: 0 }}
